@@ -37,13 +37,13 @@ return [
 	'facebook' => [
 		'client_id' => '1596876927212366',
 		'client_secret' => '7fd11b8f149cfe1459c1172bfc650922',
-		'redirect' => 'http://wishyou.veduo.nl/auth/facebook',
+		'redirect' => 'http://dev.upnote.io/auth/facebook',
 	],
 	
 	'google' => [
 		'client_id' => '380508909270-33ufvdm99io0oi7u1gugujj2pm54nemg.apps.googleusercontent.com',
 		'client_secret' => 'lPTZZNiKqsy1RkAvLArDRC51',
-		'redirect' => 'http://wishyou.veduo.nl/auth/google',
+		'redirect' => 'http://dev.upnote.io/auth/google',
 	],
 
 ];
