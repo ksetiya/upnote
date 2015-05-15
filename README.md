@@ -1,2 +1,0 @@
-# upnote
-UpNote production repo
