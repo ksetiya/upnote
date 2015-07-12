@@ -16,7 +16,7 @@ class AddPointsLevelToUsers extends Migration {
 		{
 			$table->string('badges')->nullable();
 			$table->biginteger('points')->default(0);
-			$table->string('level')->default('A');
+			$table->string('level')->default('Newb');
 			
 		});
 	}

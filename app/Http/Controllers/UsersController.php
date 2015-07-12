@@ -96,39 +96,17 @@ class UsersController extends Controller {
 		
 	}
 	
-	 public function handleComment() //add 150 points for posting comment and send a notification
+	 public function markRead()
 	 {
-		$postID = Req::input('postID');
-		$post = Post::where('id',$postID)->first();  
+	 	
 		$user = \Auth::user();
-		$commentBody = Req::input('body');
-		 
-		$user->addToPoints(150);
-		if($user->setLevel()){
-			$user->newNotification()
-			//->withType('')
-			->withSubject('Congrats! You are now '.$user->getLevel())
-			//->withBody('')
-			//->regarding($recipe)
-			->deliver();
-		}
-		$user->save();
-		
-		$user->newNotification()
-			//->withType('')
-			->withSubject('+150 points for your kind words.')
-			//->withBody('')
-			->regarding($post)
-			->deliver();	
-		
-		$toAuthor = User::where('name',$post->author)->first();
-		$toAuthor->newNotification()
-			//->withType('')
-			->withSubject('You received a comment on your story from '. $user->name)
-			//->withBody('')
-			->regarding($post)
-			->deliver();
-	 }
+			
+		$unreads = $user->getUnreadNotifications($user->id);
 	
+		foreach($unreads as $notification){
+			$notification->is_read = 1;
+			$notification->save();
+		}
+	 } 
 	 
 }

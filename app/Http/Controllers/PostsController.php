@@ -11,8 +11,16 @@ use Illuminate\Http\Request;
 use Request as Req;
 use App\Notification;
 use Carbon\Carbon;
+use Intervention\Image\ImageManagerStatic as Image;
+use App\Tag;
 
 class PostsController extends Controller {
+
+ 
+	public function __construct()
+	{
+	 Image::configure(['driver' => 'imagick']);
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -21,11 +29,16 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
+		
 		$posts = Post::latest()->where('draft', 0)->get();
 		$latestPosts = Post::orderBy('created_at', 'DESC')->take(7)->get();
 		return view('posts.index')->with(['posts' => $posts, 'latestPosts' => $latestPosts ]);
 	}
-
+	
+	public function showUserPosts($username){
+		$posts = User::findByUsernameOrFail($username)->posts;
+		return view('posts.index', compact('posts'));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -36,7 +49,11 @@ class PostsController extends Controller {
 		if(\Auth::guest()){
 				return redirect('/auth/login');
 				
-			} else return view('posts.create'); 
+			} else {
+				$tags = Tag::lists('name', 'id');	
+				return view('posts.create', compact('tags')); 
+				
+			}
 	}
 
 	/**
@@ -46,17 +63,62 @@ class PostsController extends Controller {
 	 */
 	public function store(PostRequest $request)
 	{
+		
 	 
-		$post = Post::create($request->all());
-		$post->user_id = \Auth::user()->id;
-		$post->author = \Auth::user()->name;
-		$post->slug = Str::slug($post->title);
-		$post->hearts = 0;
-		$post->save();
-
-		return redirect('posts')->withFlashmessage('Thanks for your story! We will review it and let you know when we can publish it.');
+		$validator = \Validator::make($request->all(), $request->rules());
+		
+		if ($validator->fails()){
+			
+			 return redirect('posts/create')
+			 			->withErrors($validator)
+                        ->withInput();
+		}
+	 	//validation succeeds
+			$post = Post::create($request->except('coverpic', 'tags'));
+			$post->body = $this->insertLinksInText($post->body);
+			$post->user_id = \Auth::user()->id;
+			$post->author = \Auth::user()->name;
+			$post->slug = Str::slug($post->title);
+			$post->hearts = 0;
+			
+			//handle the uploaded coverpic
+			if($request->hasFile('coverpic')){
+				
+				$img = $this->handleCoverpic($request->file('coverpic'), $request);
+				
+				$pathtosave = public_path().'/images/coverpics/';
+				$ext = $request->file('coverpic')->getClientOriginalExtension();
+		
+				$img->save($pathtosave.$post->slug.$ext);
+				$post->coverpic = url().'/images/coverpics/'.$post->slug.$ext;
+			}
+			
+		
+			$this->syncTags($post, $request);
+		
+			$post->save();
+                        
+			return redirect('posts')->withFlashmessage('Thanks for your story! We will review it and let you know when we can publish it.');
+			
 	}
 
+	private function handleCoverpic($img, $request){
+		$img = Image::make($request->file('coverpic'));
+		// resize the image to a width of 300 and constrain aspect ratio (auto height)
+		$img->resize(560, null, function ($constraint) {
+		 $constraint->aspectRatio();
+		});
+		return $img;
+			 
+	}
+	private function insertLinksInText($text){
+		
+		$regex = '@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.\,]*(\?\S+)?)?)*)@';
+		$replacement = '<a href="$1" class="link1" target="_blank">$1</a>';
+		$text = preg_replace($regex, $replacement, $text);
+		
+		return $text;
+	}
 	/**
 	 * Display the specified resource.
 	 *
@@ -79,25 +141,45 @@ class PostsController extends Controller {
 			}
 		}
 		
-		if(Comment::with('post_id', $id)->exists()){
-			$comments = Comment::where('post_id', $id)->get();
-			
-			return view('posts.show')->with(['post' => $post, 'comments' => $comments, 'hearted' => $hearted]);
-		}
-		
-		return view('posts.show')->with(['post' => $post, 'hearted' => $hearted]);
+		$moreComments = Comment::orderBy('created_at', 'DESC')->take(4)->get();
+		return view('posts.show')->with(['post' => $post, 'hearted' => $hearted, 'moreComments' => $moreComments]);
 		
 	}
 	
-	public function showCategory($category) {
+	public function showLatest(){
+	 	$posts = $this->getLatest(10);
+		return view('posts.index', compact('posts'));
+	}
+	
+	private function getLatest($numberofPosts){
+		$posts =  Post::where('draft', 0)->take($numberofPosts)->orderBy('created_at','DESC')->get();
+		return $posts;
+	}
+	public function showByTag($tag){
+		
+		$tag = Tag::where('name', $tag)->first();
+		$posts = $tag->posts;
+	 	 
+		return view('posts.index')->with(['posts' => $posts, 'tag'=>$tag]);
+
+	}
+	
+	public function showTrending(){
+		$latest = $this->getLatest(30);
+		$trending = $latest->sortByDesc('hearts');
+		
+		return view('posts.index')->with(['posts' => $trending]);
+	}
+	
+	// public function showCategory($category) {
 	
 	 
-		$posts = Post::where('category', $category)
-				->where('draft', 0)->get();
+	// 	$posts = Post::where('category', $category)
+	// 			->where('draft', 0)->get();
 		
 		 
-		return view('posts.index')->with(['posts' => $posts]);
-	}
+	// 	return view('posts.index')->with(['posts' => $posts, 'category'=>$category]);
+	// }
 
 	 
 	/**
@@ -108,9 +190,10 @@ class PostsController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$tags = Tag::lists('name', 'id');
 		$post = Post::findOrFail($id);
 		if(\Auth::user()->id == $post->user_id){
-			return view('posts.edit', compact('post'));
+			return view('posts.edit', compact('post', 'tags'));
 			}
 		return redirect('posts'); 
 	}
@@ -126,8 +209,37 @@ class PostsController extends Controller {
 		$post = Post::findOrFail($id);
 		
 		$post->update($request->all());
+		$this->syncTags($post, $request);
 		
 		return redirect('posts');
+	}
+	
+	// private function syncTags(Post $post, array $tags){
+	// 	$post->tags()->sync($tags);
+	// }
+	
+	private function syncTags($post, $request)
+	{
+	    if ( ! $request->has('tag_list'))
+	    {
+	        $post->tags()->detach();
+	        return;
+	    }
+	
+	    $allTagIds = array();
+	
+	    foreach ($request->tag_list as $tagId)
+	    {
+	        if (substr($tagId, 0, 4) == 'new:')
+	        {
+	            $newTag = Tag::create(['name' => substr($tagId, 4)]);
+	            $allTagIds[] = $newTag->id;
+	            continue;
+	        }
+	        $allTagIds[] = $tagId;
+	    }
+	
+	    $post->tags()->sync($allTagIds);
 	}
 
 	/**
@@ -148,41 +260,44 @@ class PostsController extends Controller {
 	public function upHeart()
 	{
 		
-		if(\Auth::guest()){
-				return redirect('/auth/login');
-		} 
+		// if(\Auth::guest()){
+		// 		return redirect('/auth/login');
+		// } 
 		
 		$postID = Req::input('postid');
 		$post = Post::where('id', $postID)->first();
 		
 		$post->hearts++;
+		$post->save();
 		
-		\Auth::user()->hearted.=$postID.','; //register that the auth user has hearted this post
-		\Auth::user()->addToPoints(50);
+		$user = User::find($post->user_id);
 		
-		if(\Auth::user()->setLevel()){
+		if(\Auth::check()){
+			\Auth::user()->hearted.=$postID.','; //register that the auth user has hearted this post
+			\Auth::user()->addToPoints(50);
+			
 			if(\Auth::user()->setLevel()){
 				\Auth::user()->newNotification()
 				->withSubject('Congrats! You are now '.\Auth::user()->getLevel())
 				->deliver();
 			}
-		}
+			
+			$user->newNotification()
+			//->withType('uphearted') --this breaks it
+			->withSubject('New upheart!')
+			->withBody(\Auth::user()->name.' uphearted your story: '.$post->title)
+			->regarding($post)
+			->deliver();
+		} else{
+			$user->newNotification()
+			//->withType('uphearted') --this breaks it
+			->withSubject('New upheart!')
+			->withBody('Someone (anonymous) uphearted your story: '.$post->title)
+			->regarding($post)
+			->deliver();
+		} 
 		
-		\Auth::user()->save();
-		
-		$post->save();
-		
-		$user = User::find($post->user_id);
-		
-		$user->newNotification()
-		//->withType('uphearted') --this breaks it
-		->withSubject('New upheart!')
-		->withBody(\Auth::user()->name.' uphearted your story: '.$post->title)
-		->regarding($post)
-		->deliver();
- 
-		
-		return redirect()->back()->withFlashmessage("+50 points. Thanks! Your love means a lot. If you haven't already, please leave a few uplifting words for ".$post->author." too.");
+		return redirect()->back()->withFlashmessage("+50 points. Thanks! Your love means a lot. If you haven't already, please login and leave a few uplifting words for ".$post->author." too.");
 		 
 		
 	}

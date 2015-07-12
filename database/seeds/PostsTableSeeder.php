@@ -8,35 +8,41 @@ class PostsTableSeeder extends Seeder {
 	public function run() 
 	{
 		// Create a Faker object
-		$faker = Faker\Factory::create();
- 
-		$categories = array("health", "relationships", "depression", "school", "light", "misc");
+		$faker = Faker\Factory::create('en_US');
+ 		
+	//	$categories = array("health", "relationships", "depression", "school", "light", "misc");
 		
 
 		// Create 5 sentences
 		foreach( range(1, 50) as $item )
 		{
 		
-				$rand_keys = array_rand($categories, 1); 
-		        Post::create(array(
-			        // Title with 3 words
-   			        'title' => $faker->sentence(3),
-			        // body with 4 sentences
-			        'body' => $faker->paragraph(6),
-			        // Date between now and two weeks earlier
-			        'created_at' => $faker->dateTimeBetween('now', '+14 days'),
+			//	$rand_keys = array_rand($categories, 1); 
+		        Post::create([
+		        	// Date between now and two weeks later
+			        'created_at' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now'),
+			        
 					// author
-					'author' => $faker->name,
+					'author' => $faker->firstName,
+					
 					// hearts
-					'hearts' => $faker->numberBetween($min = 0, $max = 9000),
+					'hearts' => $faker->numberBetween($min = 1, $max = 9000),
+					
+			        // body with 4 sentences
+			        'body' => $faker->realText($maxNbChars = 550, $indexSize = 2),
+			        
 					 //coverpic
 					 'coverpic' => $faker->imageUrl($width = 640, $height = 480),
+					 
 					 //category
-					 'category' => $categories[array_rand($categories)],
-					 //user_id -- all refers to user with id 1
-					 'user_id' => 8
-					
-		        ));
+				//	 'category' => $categories[array_rand($categories)],
+					 
+					 //user_id -- all refers to user with id 8
+					 'user_id' => 1,
+					 
+					 // Title with 3 words
+   			         'title' => $faker->realText($maxNbChars = 30, $indexSize = 2)
+		        ]);
 		}
 	} 
 }

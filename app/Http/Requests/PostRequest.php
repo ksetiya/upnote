@@ -22,9 +22,9 @@ class PostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'title' => 'required|min:3',
-			'body' => 'required',
-			'category' => 'required'
+		 'title' => 'required|min:3',
+		 'body' => 'required|min:10',
+		 'coverpic' => 'image | min:5 | max:5000'
 		];
 	}
 

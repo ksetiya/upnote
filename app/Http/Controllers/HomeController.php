@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\User;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,9 +32,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		//return view('home');
-		//return redirect('posts');
-		return view('welcome');
+		$users = User::all();
+		return view('welcome', compact('users'));
 	}
 
 }

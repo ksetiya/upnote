@@ -3,6 +3,7 @@
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use GeoIP;
 
 class Registrar implements RegistrarContract {
 
@@ -29,11 +30,21 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
+		$location = GeoIP::getLocation();
+	 
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
+			'country'=>$location['country'],
+			'isoCountry'=> strtolower($location['isoCode'])
 		]);
+		
+		 Mail::send('emails.welcome', ['user'=> $user], function($message) use($user){
+		          $message->to($user->email)->subject('Welcome to UpNote');
+		      }); 
+		      
+		 return $user;
 	}
 
 }

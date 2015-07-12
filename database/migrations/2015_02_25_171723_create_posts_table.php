@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration {
 			$table->string('author');
 			$table->text('body');
 			$table->string('tags')->nullable();
-			$table->string('category')->nullable();
+		//	$table->string('category')->nullable();
 			$table->bigInteger('hearts')->nullable();
 			$table->text('coverpic')->nullable();
 			$table->string('slug');

@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password', 'avatar', 'country', 'isoCountry'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -56,6 +56,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function posts() 
 	{
 		return $this->hasMany('App\Post');
+	}
+	
+	// a user can have many votes
+	public function votes() 
+	{
+		return $this->hasMany('App\Vote');
 	}
 	
 	//a user can have many comments
@@ -114,6 +120,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function addToPoints($amount)
 	{
 		$this->points += $amount; 
+		$this->save();
 		return;
 	}
 	
@@ -142,6 +149,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		if($currentLevel !== $this->level){
 			$promotion = 1;
 		}
+		$this->save();
 		return $promotion;
 	}
 	

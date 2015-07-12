@@ -3,32 +3,34 @@
 @section('content')
 <div class="container">
 
-<h1 class="page-header text-center"><i class="fa fa-user"></i></h1>
-
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+<h1 class="text-center">Log in to UpNote with</h1>
+<div class="row">
+		<div class="text-center col-md-4 col-md-offset-4">
+		<hr class="colorgraph">
 			<a href="{{url('auth/facebook')}}" class="btn btn-block btn-social btn-lg btn-facebook">
-				<i class="fa fa-facebook"></i> Log in with Facebook 
+				<i class="fa fa-facebook"></i> Facebook 
 			  </a>
 			  
 			  <a href="{{url('auth/google')}}" class="btn btn-block btn-social btn-lg btn-google-plus">
-				<i class="fa fa-google-plus"></i> Log in with Google 
+				<i class="fa fa-google"></i> Google 
 			  </a>
+			<h4> <small>Don't worry. We'll <strong>never</strong> post without your permission.</small>
+			 </h4>	
+ 
+			 <div class="horizontal-separator"><span class="separator-text">OR</span></div>
 		</div>
+		
 	</div>
 	
-	<div class="row clearfix">
-			<p class="text-center">- OR -</p>
-		</div>
+	 
 	
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-default">
-				<a data-toggle="collapse" data-target="#collapseOne" 
+		<h4><a data-toggle="collapse" data-target="#collapseOne" 
            href="#collapseOne">
-         <div class="panel-heading">Login with email</div>
-        </a>
-      </h4>
+         <div class="panel-heading text-center">Log in with email</div>
+        </a></h4>
+			<div class="panel panel-default user-registration-panel">
 
         
         <div id="collapseOne" class="panel-collapse collapse out">
@@ -82,9 +84,10 @@
 							</div>
 						</div>
 					</form>
+					 
 				</div>
 			</div>
-		 
+		 <h5 class="text-center"><small>By logging in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</small></h5>
 		</div>
 	</div>
 </div>

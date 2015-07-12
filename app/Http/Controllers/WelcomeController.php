@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use \App\User;
+use GeoIP;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -20,6 +23,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
+		
 		$this->middleware('guest');
 	}
 
@@ -30,7 +34,13 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		
+		$users = User::all();
+		return view('welcome', compact('users'));
 	}
 
+ 	public function geo(){
+ 		$location = GeoIP::getLocation();
+ 		dd($location);
+ 	}
 }

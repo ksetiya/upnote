@@ -26,7 +26,8 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	//'url' => 'http://localhost',
+	'url' => 'http://dev.upnote.io',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -137,6 +138,8 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+		'Torann\GeoIP\GeoIPServiceProvider',
 		
 
 		/*
@@ -196,8 +199,10 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'      => 'Illuminate\Html\FormFacade',
-		'Html'      => 'Illuminate\Html\HtmlFacade',
+		'HTML'      => 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+		'Image' => 'Intervention\Image\Facades\Image',
+		'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
 
 	],
 
