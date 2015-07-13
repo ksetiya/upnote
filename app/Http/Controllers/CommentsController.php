@@ -8,6 +8,7 @@ use App\Post;
 use App\Comment;
 use Illuminate\Http\Request;
 use Request as Req;
+use \App\Classes\ProfanityFilter\Check as ProfanityFilter;
 
 class CommentsController extends Controller {
 
@@ -19,7 +20,10 @@ class CommentsController extends Controller {
 	 */
 	public function store(CreateCommentRequest $request)
 	{
-			
+		$filter = new ProfanityFilter();
+		if($filter->hasProfanity($request->input('body'))){
+			return redirect()->back()->withFlashmessage('Please refrain from profanity');
+		}
 		$comment = Comment::create($request->all());
 		$user = \Auth::user();
 		

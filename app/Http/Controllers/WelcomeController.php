@@ -3,6 +3,7 @@
 use \App\User;
 use GeoIP;
 
+
 class WelcomeController extends Controller {
 
 	/*
@@ -39,8 +40,5 @@ class WelcomeController extends Controller {
 		return view('welcome', compact('users'));
 	}
 
- 	public function geo(){
- 		$location = GeoIP::getLocation();
- 		dd($location);
- 	}
+  
 }

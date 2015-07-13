@@ -15,7 +15,7 @@
 	  <div class="col-md-3">
         <ul class="list-unstyled">
 			<li><strong>Contact us</strong></li>
-			<li><a href="mailto:k.setiya91@gmail.com" target="_blank">E-Mail</a></li>
+			<li><a href="{{url('/contact')}}">E-Mail</a></li>
          </ul>
       </div>
       <div class="col-md-3">
