@@ -22,23 +22,22 @@
         {!! Form::text('name', null, 
             array('required', 
                   'class'=>'form-control', 
-                  'placeholder'=>'Your name')) !!}
+                  'placeholder'=>'Tony Stark')) !!}
     </div>
     
     <div class="form-group">
-        {!! Form::label('Your E-mail Address') !!}
+        {!! Form::label('Your email address') !!}
         {!! Form::text('email', null, 
             array('required', 
                   'class'=>'form-control', 
-                  'placeholder'=>'Your e-mail address')) !!}
+                  'placeholder'=>'tony@stark.com')) !!}
     </div>
     
     <div class="form-group">
         {!! Form::label('Your Message') !!}
         {!! Form::textarea('message', null, 
             array('required', 
-                  'class'=>'form-control', 
-                  'placeholder'=>'Your message')) !!}
+                  'class'=>'form-control')) !!}
     </div>
     
     <div class="form-group">

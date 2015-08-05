@@ -32,6 +32,7 @@ class SessionsController extends Controller {
 				    'isoCountry'=> strtolower($location['isoCode'])
 			        ]
 			        );
+			        
 			      Mail::send('emails.welcome', ['user'=>$theUser], function($message) use($theUser){
 			          $message->to($theUser->email)->subject('Welcome to UpNote');
 			      }); 
