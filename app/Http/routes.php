@@ -46,6 +46,11 @@ Route::post('users.markRead', array('as' => 'users.markRead', 'uses' => 'UsersCo
 Route::get('auth/facebook', 'SessionsController@loginWithFacebook');
 Route::get('auth/google', 'SessionsController@loginWithGoogle');
 
+// Mission
+Route::get('mission', function(){
+    return view('mission');
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

@@ -6,8 +6,8 @@
       <div class="col-md-3">
         <ul class="list-unstyled">
          <li><strong>About us</strong></li>
-         <li><a href="#">Our Mission</a></li>
-         <li><a href="#">Team</a></li>
+         <li><a href="{{url('mission')}}">Our Mission</a></li>
+        <!-- <li><a href="{{url('team')}}">Team</a></li> -->
         	  
         
 	  </ul>

@@ -128,7 +128,8 @@ body { padding-top: 90px; }
 .post-block-countryflag{
   height:20px;
 }
-.typed{
+
+.typed, .black-jumbo{
     color:white;
     background:#2D3037;
     border-radius:0px!important;
@@ -136,14 +137,17 @@ body { padding-top: 90px; }
     font-weight:600;
     font-size:3em;
 }
+ 
 
-.typed h3, .joinz{
+.typed h3, .joinz, .black-jumbo{
   font-family:'Proxima Nova',sans-serif;
   font-weight:300;
   margin-top:50px;
 }
 
-
+.black-jumbo{
+  margin-top:0;
+}
 .joinz{
   margin-top:10px;
   
