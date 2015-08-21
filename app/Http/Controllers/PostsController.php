@@ -80,6 +80,7 @@ class PostsController extends Controller {
 			$post->author = \Auth::user()->name;
 			$post->slug = Str::slug($post->title);
 			$post->hearts = 0;
+			$post->draft = 0;
 			
 			//handle the uploaded coverpic
 			if($request->hasFile('coverpic')){
@@ -98,7 +99,8 @@ class PostsController extends Controller {
 		
 			$post->save();
                         
-			return redirect('posts')->withFlashmessage('Thanks for your story! We will review it and let you know when we can publish it.');
+		//	return redirect('posts')->withFlashmessage('Thanks for your story! We will review it and let you know when we can publish it.');
+			return redirect('posts')->withFlashmessage('Thanks for your story! It has been published for the world to see.');
 			
 	}
 

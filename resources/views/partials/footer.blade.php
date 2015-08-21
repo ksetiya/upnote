@@ -64,3 +64,5 @@
   
   </div>
 </footer>
+
+@include("analyticstracking")
