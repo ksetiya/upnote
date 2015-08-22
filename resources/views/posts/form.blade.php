@@ -6,13 +6,7 @@
 		<div class="form-group">
 		 	{!! Form::textarea('body', null, ['placeholder' => 'Tell us your story... (try to keep it short and sweet)', 'class' => 'story-form-body story-form-input form-control']) !!}
 		</div>
-		
-	<!--	 <div class="form-group">
-			<h3>{!! Form::label('coverpic', 'Upload a cover picture (max. 2MB)') !!}</h3>
-		
-			{!! Form::text('coverpic', null, ['class' => 'form-control']) !!}
-		</div>-->
-		
+ 		
 		<div class="fileinput fileinput-new" data-provides="fileinput">
 			<h3>{!! Form::label('coverpic', 'Cover Image', ['class' => 'story-form-label', 'id'=>'coverpic']) !!}	<small>(max. 500kb, ideal size: 560px by 420px)</small></h3>
 		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 280px; height: 110px;"></div>
@@ -27,9 +21,7 @@
 		   		
 		  </div>
 		</div>
-
-        
-		
+ 
 		<div class="form-group">
 			<h3>{!! Form::label('tag_list', 'Tags', ['class' => 'story-form-label']) !!}</h3>
 		

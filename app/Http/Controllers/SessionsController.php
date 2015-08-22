@@ -33,7 +33,7 @@ class SessionsController extends Controller {
 			        ]
 			        );
 			        
-			      Mail::send('emails.welcome', ['user'=>$theUser], function($message) use($theUser){
+			      \Mail::send('emails.welcome', ['user'=>$theUser], function($message) use($theUser){
 			          $message->to($theUser->email)->subject('Welcome to UpNote');
 			      }); 
 			} else{ $theUser = User::where('email', $user->email)->first(); }
@@ -67,7 +67,7 @@ class SessionsController extends Controller {
 				    'isoCountry'=> strtolower($location['isoCode'])
 			        ]
 			        );
-			      Mail::send('emails.welcome', ['user'=>$theUser], function($message) use($theUser){
+			      \Mail::send('emails.welcome', ['user'=>$theUser], function($message) use($theUser){
 			          $message->to($theUser->email)->subject('Welcome to UpNote');
 			      }); 
 			} else{ $theUser = User::where('email', $user->email)->first(); }

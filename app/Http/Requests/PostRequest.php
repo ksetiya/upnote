@@ -24,7 +24,7 @@ class PostRequest extends Request {
 		return [
 		 'title' => 'required|min:3',
 		 'body' => 'required|min:10',
-		 'coverpic' => 'image | min:5 | max:5000'
+		 'coverpic' => 'image|mimes:jpeg,bmp,png|min:5|max:5000'
 		];
 	}
 

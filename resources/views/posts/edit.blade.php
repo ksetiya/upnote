@@ -9,7 +9,7 @@
 	{!! Form::close() !!}
 	<hr />
 	
-	{!! Form::model($post, ['method' => 'PATCH', 'route' => ['posts.update', $post->id]], ['role' => 'form']) !!}
+	{!! Form::model($post, ['method' => 'PATCH', 'route' => ['posts.update', $post->id], 'files' => true], ['role' => 'form']) !!}
 	
 		@include('posts.form', ['submitButtonText' => 'Update Post'])
 		

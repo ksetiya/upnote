@@ -64,7 +64,7 @@ class PostsController extends Controller {
 	public function store(PostRequest $request)
 	{
 		
-	 
+	  
 		$validator = \Validator::make($request->all(), $request->rules());
 		
 		if ($validator->fails()){
@@ -90,8 +90,8 @@ class PostsController extends Controller {
 				$pathtosave = public_path().'/images/coverpics/';
 				$ext = $request->file('coverpic')->getClientOriginalExtension();
 		
-				$img->save($pathtosave.$post->slug.$ext);
-				$post->coverpic = url().'/images/coverpics/'.$post->slug.$ext;
+				$img->save($pathtosave.$post->slug.'.'.$ext);
+				$post->coverpic = url().'/images/coverpics/'.$post->slug.'.'.$ext;
 			}
 			
 		
@@ -208,18 +208,28 @@ class PostsController extends Controller {
 	 */
 	public function update($id, PostRequest $request)
 	{
+		  
 		$post = Post::findOrFail($id);
 		
-		$post->update($request->all());
-		$this->syncTags($post, $request);
+		if($request->hasFile('coverpic')){
 		
+			$img = $this->handleCoverpic($request->file('coverpic'), $request);
+			
+			$pathtosave = public_path().'/images/coverpics/';
+		 
+			$ext = $request->file('coverpic')->getClientOriginalExtension();
+	
+			$img->save($pathtosave.$post->slug.'.'.$ext);
+			$post->coverpic = url().'/images/coverpics/'.$post->slug.'.'.$ext;
+			$post->save();
+		} 
+		$post->update($request->except('coverpic'));
+		$this->syncTags($post, $request);
+	 
 		return redirect('posts');
 	}
 	
-	// private function syncTags(Post $post, array $tags){
-	// 	$post->tags()->sync($tags);
-	// }
-	
+ 
 	private function syncTags($post, $request)
 	{
 	    if ( ! $request->has('tag_list'))

@@ -28,7 +28,7 @@
 	
  
 		<div class="row">
-			<h2 id="home-slogan" class="wow fadeIn"><a href="{{ URL::to('/auth/login') }}">Join the conspiracy of kindness</a>
+			<h2 id="home-slogan" class="wow fadeIn"><a href="{{ URL::to('/auth/register') }}">Join the conspiracy of kindness</a>
 			<br/>
 			<small>
 		(<strong>Closed Beta</strong>, we have <strong>@if($users->count()>1000) 0 @else {{1000 - $users->count()}} @endif</strong> out of 1000 accounts left)</small>
