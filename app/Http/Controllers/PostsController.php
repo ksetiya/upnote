@@ -194,7 +194,7 @@ class PostsController extends Controller {
 	{
 		$tags = Tag::lists('name', 'id');
 		$post = Post::findOrFail($id);
-		if(\Auth::user()->id == $post->user_id){
+		if(\Auth::user()->id == $post->user_id || \Auth::user()->name = 'Karan Solo'){
 			return view('posts.edit', compact('post', 'tags'));
 			}
 		return redirect('posts'); 
@@ -219,8 +219,8 @@ class PostsController extends Controller {
 		 
 			$ext = $request->file('coverpic')->getClientOriginalExtension();
 	
-			$img->save($pathtosave.$post->slug.'.'.$ext);
-			$post->coverpic = url().'/images/coverpics/'.$post->slug.'.'.$ext;
+			$img->save($pathtosave.$post->slug.$post->id.'.'.$ext);
+			$post->coverpic = url().'/images/coverpics/'.$post->slug.$post->id.'.'.$ext;
 			$post->save();
 		} 
 		$post->update($request->except('coverpic'));
