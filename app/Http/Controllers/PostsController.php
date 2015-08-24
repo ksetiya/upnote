@@ -291,6 +291,7 @@ class PostsController extends Controller {
 			if(\Auth::user()->setLevel()){
 				\Auth::user()->newNotification()
 				->withSubject('Congrats! You are now '.\Auth::user()->getLevel())
+				->regarding($post) 
 				->deliver();
 			}
 			
