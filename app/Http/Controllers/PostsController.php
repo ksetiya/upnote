@@ -196,7 +196,7 @@ class PostsController extends Controller {
 		$post = Post::findOrFail($id);
 		if(\Auth::user()->id == $post->user_id || \Auth::user()->name = 'Karan Solo'){
 			return view('posts.edit', compact('post', 'tags'));
-			}
+			} 
 		return redirect('posts'); 
 	}
 
