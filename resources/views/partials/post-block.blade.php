@@ -2,7 +2,10 @@
 <article class="col-md-4 story-wrapper">
 	@unless($post->coverpic == null)
 	<div class="story-thumbphoto">
-		 <a href="{{ action('PostsController@show', [$post->id]) }}"><img src="{{$post->coverpic}}" alt="{{$post->title}}"></a>
+		 <a href="{{ action('PostsController@show', [$post->id]) }}">
+		 	{!! HTML::image('images/coverpics/'.$post->coverpic,  $post->title, ['title'=>$post->title, 'class'=>'']) !!}
+		 	
+		 	</a>
 	</div>
 	@endunless
 	

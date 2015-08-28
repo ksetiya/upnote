@@ -321,7 +321,7 @@ article.post-body{
 .tagwrap{
   padding:5px 0;
   height:30px;
-   
+   overflow-y:hidden;
   overflow-x:hidden;
    
 }

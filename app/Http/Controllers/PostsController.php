@@ -91,7 +91,7 @@ class PostsController extends Controller {
 				$ext = $request->file('coverpic')->getClientOriginalExtension();
 		
 				$img->save($pathtosave.$post->slug.'.'.$ext);
-				$post->coverpic = url().'/images/coverpics/'.$post->slug.'.'.$ext;
+				$post->coverpic = $post->slug.'.'.$ext;
 			}
 			
 		
