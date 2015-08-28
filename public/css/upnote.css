@@ -129,23 +129,30 @@ body { padding-top: 90px; }
   height:20px;
 }
 
-.typed, .black-jumbo{
+.typed, .black-jumbo, .green-jumbo{
     color:white;
-    background:#2D3037;
+    
     border-radius:0px!important;
     font-family: 'Calligraffitti', cursive;
     font-weight:600;
     font-size:3em;
 }
+ .black-jumbo, .typed{
+   background:#2D3037;
+ }
  
+  .green-jumbo{
+   background:#53893E;
+ }
 
-.typed h3, .joinz, .black-jumbo{
+
+.typed h3, .joinz, .black-jumbo, .green-jumbo{
   font-family:'Proxima Nova',sans-serif;
   font-weight:300;
   margin-top:50px;
 }
 
-.black-jumbo{
+.black-jumbo, .green-jumbo{
   margin-top:0;
 }
 .joinz{
@@ -157,6 +164,54 @@ body { padding-top: 90px; }
   font-weight:500;
 }
 
+.donation-text{
+  font-size: 18px;
+    margin: 25px auto;
+     
+}
+
+.donate-form {
+    background: #eee;
+    border-radius: 20px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height:200px;
+    padding: 30px;
+    margin:0 auto;
+}
+
+.donate-form .amount-choices {
+    text-align: center;
+    margin: 10px 0 20px;
+    margin: auto;
+    width:110%;
+}
+.donate-form .amount-choices div {
+    display: inline-block;
+    margin: 5px;
+
+}
+.donate-form .amount-choices a:hover {
+  cursor: pointer;
+  background: #0061d9;
+  border:0px;
+  color:white;
+  font-weight:900;
+}
+.donate-form .amount-choices a {
+    margin: 5px auto;
+    background: #fff;
+    border: 1px solid #444;
+    border-radius: 100%;
+    color: inherit;
+    display: block;
+    font-size: 26px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    text-decoration: none;
+    width: 90px;
+}
 .typed-cursor{
     opacity: 1;
     -webkit-animation: blink 0.7s infinite;
@@ -249,9 +304,8 @@ article.post-body{
 	padding:7px;
 	font-weight:700;
 	border-radius:3px;
-	position: absolute;
-	top: 0;
-	
+	position: relative;
+	 
 }
 .post-tag{
   font-family:'Proxima Nova',sans-serif;
@@ -262,8 +316,15 @@ article.post-body{
 .taglabel a{
   color:white;
 }
-/* posts overview views, thumbnails */
 
+/* posts overview views, thumbnails */
+.tagwrap{
+  padding:5px 0;
+  height:30px;
+   
+  overflow-x:hidden;
+   
+}
 .stories-row{
   
     
@@ -295,15 +356,16 @@ article.post-body{
  
 .story-thumbdata{
 	padding:5px;
-	min-height:200px;
+	min-height:250px;
 }
 .story-thumbdata .story-title{
-  margin-top:25px;
+  margin-top:20px;
   
 }
 .thumbnail-footer{
 	position:absolute;
 	bottom:3px;
+	height:25px;
 	 
 	
 }
@@ -459,6 +521,28 @@ footer{
   color:red;
 }
 
+/*profile */
+.profile-avatar{
+  height:150px;
+  width:150px;
+}
+
+.teamcontainer{
+
+	margin:30px auto;
+}
+.teamportrait{
+  border-radius:50%;
+  width:250px;
+}
+.blockquote-box .square {
+    width: 100px;
+    min-height: 50px;
+    margin-right: 22px;
+    text-align: center!important;
+    background-color: #E6E6E6;
+    padding: 25px 0;
+}
 
 /* Post submission progress button*/
 @-webkit-keyframes ld {

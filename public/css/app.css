@@ -1,6 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Pacifico);
-@import url(http://fonts.googleapis.com/css?family=Calligraffitti);
-@import url(http://fonts.googleapis.com/css?family=Sail);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Calligraffitti);
+@import url(https://fonts.googleapis.com/css?family=Sail);
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
@@ -885,7 +885,7 @@ html {
 body {
   /*font-family: "Roboto", Helvetica, Arial, sans-serif;*/
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff;

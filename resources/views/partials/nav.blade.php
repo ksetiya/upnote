@@ -14,6 +14,17 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">	
 				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-question-circle"></i> About <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+				  	<li><a href="{{url('mission')}}"> Mission</a></li>
+					<li><a href="{{url('team')}}"> Team</a></li>
+					<li class="divider"></li>
+					<li><a href="{{url('donate')}}"> Donate</a></li>
+					
+				 
+				  </ul>
+				</li>
+				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-list"></i> Stories <span class="caret"></span></a>
 				  <ul class="dropdown-menu" role="menu">
 				  	<li><a href="{{url('posts/trending')}}"> <i class="fa fa-line-chart"></i> Trending</a></li>
@@ -47,6 +58,7 @@
 				
 				<ul class="nav navbar-nav">
 					<li><a href="/posts/create"><i class="fa fa-plus-circle"></i> Create</a></li>
+				<!--	<li><a href="/donate"><i class="fa fa-dollar"></i> Donate</a></li> -->
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

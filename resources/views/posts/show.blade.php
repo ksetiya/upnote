@@ -23,8 +23,8 @@
 
 	@if(\Auth::check() && $post->author == \Auth::user()->name)	 
 	<small class="pull-right">
-
-		<a href="{{Request::url()}}/edit"><i class="fa fa-edit"></i> Edit story</a>
+	<a href="{{Request::url()}}/edit"><button class="btn btn-default pull-right"><i class="fa fa-edit"></i> Edit</button></a>
+		 
 
 	</small>
 	@endif
@@ -93,7 +93,7 @@
 			{!! Form::close() !!}
 		@else
 			<div class="comments__create-form">
-				<h4><a href="{!! url('/auth/login') !!}">Log in</a> to leave an UpNote for {!! $post->author !!}</h4>	 
+				<h4><a href="{!! url('/auth/login') !!}">Log in</a> to leave an UpNote for <a href="{{action('UsersController@show', $post->user->name)}}">{!! $post->author !!}</a></h4>	 
 			</div>
 		@endif
 		

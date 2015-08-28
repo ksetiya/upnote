@@ -10,7 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+use Stripe\Stripe;
  
+
 Route::resource('users', 'UsersController');
 Route::get('users/{username}/posts', 'PostsController@showUserPosts');
 //Route::get('posts/category/{category}', 'PostsController@showCategory');  
@@ -50,6 +53,48 @@ Route::get('auth/google', 'SessionsController@loginWithGoogle');
 Route::get('mission', function(){
     return view('mission');
 });
+
+// Team
+Route::get('team', function(){
+    return view('team');
+});
+
+// Donations
+Route::get('donate', function(){
+    return view('donate');
+});
+ 
+
+Route::post('donate', function (){
+     // print_r(Input::all());
+     // echo '<hr/>';
+      
+      Stripe::setApiKey('sk_live_7OAQit9Qwqd8ZmI0K8v4he8C');
+      $token = Input::get('stripeToken');
+      $amount = Input::get('amount');
+      
+      try{
+          $charge = \Stripe\Charge::create([
+              "amount" => $amount,
+              "currency" => "usd",
+              "card" => $token,
+              "description" => 'Donation'
+              ]
+              
+              );
+          
+      } catch(Stripe_CardError $e){
+          // card has been declined
+          dd($e);
+      }
+      \Mail::send('emails.donation-success', [], function($message){
+			          $message->to(Input::get('stripeEmail'))->subject('Thank you for your contribution!');
+			      }); 
+       return view('donation-success');
+      
+      
+    });
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

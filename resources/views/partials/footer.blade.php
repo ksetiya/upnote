@@ -7,7 +7,7 @@
         <ul class="list-unstyled">
          <li><strong>About us</strong></li>
          <li><a href="{{url('mission')}}">Our Mission</a></li>
-        <!-- <li><a href="{{url('team')}}">Team</a></li> -->
+          <li><a href="{{url('team')}}">Team</a></li> 
         	  
         
 	  </ul>
@@ -20,7 +20,7 @@
       </div>
       <div class="col-md-3">
         <ul class="list-unstyled">
-		    <li><strong>Donate</strong></li>
+		<li><strong><a href="{{url('/donate')}}">Donate</a></strong></li>
 			<li><a href="#"></a></li>
 		 
          
@@ -30,8 +30,8 @@
 	       <div class="col-md-3">
         <ul class="list-unstyled">
 		    <li><strong>Follow us</strong></li>
-			<li><a href="#"></a></li>
-		 
+			<li><a target="_blank" href="https://twitter.com/iamkaransetiya">Twitter</a></li>
+		  
         <!-- <li><a href="#">Forum</a></li>-->
         </ul>
       </div> 
