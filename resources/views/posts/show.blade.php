@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
- <script src="https://raw.githubusercontent.com/imakewebthings/waypoints/master/lib/jquery.waypoints.min.js"></script>
-	 <script src="https://raw.githubusercontent.com/bfintal/Counter-Up/master/jquery.counterup.min.js"></script>
+ <script src="{{url('/js/waypoints.min.js')}}"></script>
+	 <script src="{{url('/js/jquery.counterup.min.js')}}"></script>
 	
  <script>
     jQuery(document).ready(function( $ ) {
