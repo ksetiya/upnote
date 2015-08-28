@@ -220,7 +220,7 @@ class PostsController extends Controller {
 			$ext = $request->file('coverpic')->getClientOriginalExtension();
 	
 			$img->save($pathtosave.$post->slug.$post->id.'.'.$ext);
-			$post->coverpic = url().'/images/coverpics/'.$post->slug.$post->id.'.'.$ext;
+			$post->coverpic = $post->slug.$post->id.'.'.$ext;
 			$post->save();
 		} 
 		$post->update($request->except('coverpic'));
