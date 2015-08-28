@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
- <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-	 <script src="http://veduo.nl/js/jquery.counterup.min.js"></script>
+ <script src="https://raw.githubusercontent.com/imakewebthings/waypoints/master/lib/jquery.waypoints.min.js"></script>
+	 <script src="https://raw.githubusercontent.com/bfintal/Counter-Up/master/jquery.counterup.min.js"></script>
 	
  <script>
     jQuery(document).ready(function( $ ) {
@@ -36,7 +36,8 @@
 	@unless($post->coverpic == null)
 	<div class="row">
 		<div class="col-md-12">
-			<img class="post-cover-pic wow fadeIn" src="{{$post->coverpic}}" alt="{{$post->title}}" />
+			{!! HTML::image('images/coverpics/'.$post->coverpic,  $post->title, ['title'=>$post->title, 'class'=>'post-cover-pic wow fadeIn']) !!}
+		  
 		</div>
 	</div>
 	@endunless

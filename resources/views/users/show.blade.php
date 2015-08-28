@@ -23,12 +23,12 @@
                        
 
                        
-                        <div class="col-xs-12 col-sm-2">
+                        <div class="col-xs-12 col-sm-3">
                             <h2><strong>{{$user->level}}</strong></h2>                    
                             <p><small>Generosity Level</small></p>
                              
                         </div><!--/col-->
-                        <div class="col-xs-12 col-sm-2">
+                        <div class="col-xs-12 col-sm-3">
                             <h2><strong>{{$user->points }}</strong></h2>                    
                             <p><small>Generosity Points</small></p>
                           
