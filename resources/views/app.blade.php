@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="{{url('/images/home-banner-bg.jpg')}}" />
+	<meta property="og:description" content="Life can be tough at times, but even a few good messages can help makes things a whole lot easier! We believe that everyone is happy to give to someone in need. On UpNote we are crowdsourcing this positivity for all those who need it." />
+	
 	<title>UpNote - Join the conspiracy of kindness.</title>
 
 	<!-- Latest compiled and minified Bootstrap CSS -->
