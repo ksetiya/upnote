@@ -5,7 +5,7 @@
 	
 	/* mailchimp */
 
-		#mc_embed_signup{  	margin:15px auto; margin-bottom:35px; width: 400px; clear:left; font-family:'Proxima Nova',sans-serif; font-size:14px; text-align:center;}
+		#mc_embed_signup{  	margin:0px auto; margin-bottom:35px; width: 400px; clear:left; font-family:'Proxima Nova',sans-serif; font-size:14px; text-align:center;}
 		
 		#mc_embed_signup input {
 			height:50px;
@@ -59,11 +59,11 @@
 	  
 	
 	</style>
-	
-<img width="100px" style="text-align:center; display:block; margin:5px auto;" src="{{url('images/icons/mail.png')}}" alt="UpNote Newsletter" />
+	<h2><strong>Be the first to receive UpDates!</strong></h2>
+<img width="100px" style="text-align:center; display:block; margin:0 auto;" src="{{url('images/icons/mail.png')}}" alt="UpNote Newsletter" />
 
 <div id="mc_embed_signup">
-			<h3>Be the first to receive UpDates!</h3>
+		
 			
 			<form action="//upnote.us11.list-manage.com/subscribe/post?u=fddb1f6cb82cb60ee5e3ece78&amp;id=4fd8524a41" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 			

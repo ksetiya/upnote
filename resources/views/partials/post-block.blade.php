@@ -24,11 +24,10 @@
 				 	</div>
 				<div class="thumbnail-footer">
 					
-					<a href="{{ action('PostsController@show', [$post->id]) }}">
+					 
 						<i class="fa fa-heart"></i> {{$post->hearts}}
-					</a>
-						<a href="{{url('posts')}}/{{$post->id}}"><i class="fa fa-comment"></i> </a>
-					 {!! $post->comments->count() !!} 
+					 
+						<i class="fa fa-comment"></i> {!! $post->comments->count() !!} 
 					 
 				</div>
 	</div>

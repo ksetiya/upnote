@@ -27,12 +27,16 @@
 	</div>
 	
  
-		<div class="row">
+		<div class="row text-center">
 			<h2 id="home-slogan" class="wow fadeIn"><a href="{{ URL::to('/auth/register') }}">Join the conspiracy of kindness</a>
 			<br/>
 			<small>
 		(<strong>Closed Beta</strong>, we have <strong>@if($users->count()>1000) 0 @else {{1000 - $users->count()}} @endif</strong> out of 1000 accounts left)</small>
 			</h2>
+			 <a class="btn btn-primary btn-lg" href="/auth/register" role="button"><strong>Join </strong><i class="fa-heart fa"></i></a>
+			</div>
+			<hr>
+		<div class="row text-center">
 			<!-- newsletter -->
 			@include('partials.newsletter')
 		</div>
@@ -64,7 +68,7 @@
 	<div class="typed jumbotron home-banner home-typed">
 		<span id="sampleUpnotes"></span>
 	 
-	 	<h3>Just a few words can go a long way</h3>
+	 	<h3>Here, we crowdsource positivity for all those who need it. Just a few words can go a long way. </h3>
 	 	<div class="joinz">
 	 		<a class="btn btn-success btn-lg" href="/posts/" role="button">Browse stories <i class="fa-book fa"></i></a>
 	  		
