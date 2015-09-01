@@ -15,6 +15,7 @@
 	  <div class="col-md-3">
         <ul class="list-unstyled">
 			<li><strong>Contact us</strong></li>
+			<li><a href="http://upnote.uservoice.com/forums/317484-general" target="_blank">Feedback</a></li>
 			<li><a href="{{url('/contact')}}">E-Mail</a></li>
          </ul>
       </div>
@@ -66,3 +67,4 @@
 </footer>
 
 @include("analyticstracking")
+@include("uservoice")

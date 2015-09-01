@@ -63,7 +63,7 @@ Route::get('team', function(){
 Route::get('donate', function(){
     return view('donate');
 });
- 
+
 
 Route::post('donate', function (){
      // print_r(Input::all());

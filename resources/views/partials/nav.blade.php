@@ -20,6 +20,7 @@
 					<li><a href="{{url('team')}}"> Team</a></li>
 					<li class="divider"></li>
 					<li><a href="{{url('donate')}}"> Donate</a></li>
+					<li><a href="http://upnote.uservoice.com/forums/317484-general" target="_blank"> Feedback</a></li>
 					
 				 
 				  </ul>
