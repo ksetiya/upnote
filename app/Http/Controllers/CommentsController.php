@@ -68,6 +68,7 @@ class CommentsController extends Controller {
 		} 
 		
 		$commentID = Req::input('commentid');
+		 
 		$comment = Comment::where('id', $commentID)->first();
 		
 		$comment->upvotes++;

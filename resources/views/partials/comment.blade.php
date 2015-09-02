@@ -26,8 +26,8 @@
 			   		<span class="commentscore"> {!! $comment->upvotes !!}</span>
 			    	{!! Form::hidden('commentid', $comment->id) !!}
 			    	{!! Form::hidden('vote', '',  ['class'=>'voteValue']) !!}
-			    	<button><i class="vote fa fa-arrow-up" id="upvote" /></i></button>
-			    	<button><i class="vote fa fa-arrow-down" id="downvote" /></i></button>
+			    	<button><i class="vote{!! $comment->id !!} fa fa-arrow-up" id="upvote" /></i></button>
+			    	<button><i class="vote{!! $comment->id !!} fa fa-arrow-down" id="downvote" /></i></button>
 				{!! Form::close() !!}
 			    @endif
 	        </div>
@@ -36,10 +36,10 @@
 		<script type="text/javascript">
 
 		$(document).ready(function(){
-			var voteForm = $("#vote{!! $comment->id !!}");
-			$('.vote').click(function(e) {
+			var voteForm{!! $comment->id !!} = $("#vote{!! $comment->id !!}");
+			$('.vote{!! $comment->id !!}').click(function(e) {
 				$('.voteValue').val(e.target.id);
-				voteForm.submit();
+				voteForm{!! $comment->id !!}.submit();
 				e.preventDefault();
 				
 				

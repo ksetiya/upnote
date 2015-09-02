@@ -23,6 +23,7 @@ class VotesController extends Controller {
 		} 
 		$voteValue = Req::input('vote');
 		$commentID = Req::input('commentid');
+	 
 		$comment = Comment::where('id', $commentID)->first();
 		$vote =	Vote::create([
 					'comment_id' => Req::input('commentid'),
