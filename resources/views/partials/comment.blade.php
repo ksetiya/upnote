@@ -36,7 +36,7 @@
 		<script type="text/javascript">
 
 		$(document).ready(function(){
-			var voteForm = $("#vote"+{{$comment->id}});
+			var voteForm = $("#vote{!! $comment->id !!}");
 			$('.vote').click(function(e) {
 				$('.voteValue').val(e.target.id);
 				voteForm.submit();
