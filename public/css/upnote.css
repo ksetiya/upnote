@@ -245,7 +245,9 @@ body { padding-top: 90px; }
 	color:red;
 	cursor:pointer;
 }
-
+.hearted{
+  color:red;
+}
 .heartswrap,.comment-counter-wrap{
 	font-size:5em;
 	color:#aaa;

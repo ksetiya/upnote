@@ -28,6 +28,8 @@ Route::resource('posts', 'PostsController');
 Route::resource('comments', 'CommentsController'); 
 Route::post('heart', array('as'=> 'heart', 'uses' => 'PostsController@upHeart'));
 Route::post('vote', array('as'=> 'vote', 'uses' => 'VotesController@store'));
+Route::post('posts', array('as'=> 'posts', 'uses' => 'UpheartsController@store'));
+ 
  
 Route::get('posts/tag/{tag}', 'PostsController@showByTag');
 

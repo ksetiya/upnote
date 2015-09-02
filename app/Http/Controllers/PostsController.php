@@ -131,20 +131,9 @@ class PostsController extends Controller {
 	{
 		$post =  Post::findOrFail($id);
 		
-		$hearted = 0;
-		 
-		if(\Auth::check()){
-			$user = \Auth::user();
-			foreach(explode(',', $user->hearted) as $heartedPost) 
-			{
-				if($heartedPost == $post->id) {
-					$hearted = 1;
-				}
-			}
-		}
 		
 		$moreComments = Comment::orderBy('created_at', 'DESC')->take(4)->get();
-		return view('posts.show')->with(['post' => $post, 'hearted' => $hearted, 'moreComments' => $moreComments]);
+		return view('posts.show')->with(['post' => $post, 'moreComments' => $moreComments]);
 		
 	}
 	
@@ -269,50 +258,5 @@ class PostsController extends Controller {
 		
 	}
 	
-	public function upHeart()
-	{
-		
-		// if(\Auth::guest()){
-		// 		return redirect('/auth/login');
-		// } 
-		
-		$postID = Req::input('postid');
-		$post = Post::where('id', $postID)->first();
-		
-		$post->hearts++;
-		$post->save();
-		
-		$user = User::find($post->user_id);
-		
-		if(\Auth::check()){
-			\Auth::user()->hearted.=$postID.','; //register that the auth user has hearted this post
-			\Auth::user()->addToPoints(50);
-			
-			if(\Auth::user()->setLevel()){
-				\Auth::user()->newNotification()
-				->withSubject('Congrats! You are now '.\Auth::user()->getLevel())
-				->regarding($post) 
-				->deliver();
-			}
-			
-			$user->newNotification()
-			//->withType('uphearted') --this breaks it
-			->withSubject('New upheart!')
-			->withBody(\Auth::user()->name.' uphearted your story: '.$post->title)
-			->regarding($post)
-			->deliver();
-		} else{
-			$user->newNotification()
-			//->withType('uphearted') --this breaks it
-			->withSubject('New upheart!')
-			->withBody('Someone (anonymous) uphearted your story: '.$post->title)
-			->regarding($post)
-			->deliver();
-		} 
-		
-		return redirect()->back()->withFlashmessage("+50 points. Thanks! Your love means a lot. If you haven't already, please login and leave a few uplifting words for ".$post->author." too.");
-		 
-		
-	}
-
+ 
 }

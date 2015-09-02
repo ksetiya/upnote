@@ -70,10 +70,10 @@
 		
 	 <div class="heartswrap col-md-6 wow fadeIn">
 	 
-			<span title="{{$post->hearts}} people have shown love, have you?" class="hearts">
-				<i class="post-heart fa fa-heart"></i>
+			<span title="{{$post->uphearts()->count()}} people have shown love, have you?" class="hearts">
+				@include('partials.upheartButton')
 			</span> 
-			<h4><span class="counter">{{$post->hearts}}</span> UpHearts</h4>
+			<h4><span class="counter">{{$post->uphearts->count()}}</span> UpHearts</h4>
 	 
 	 	</div> 
 	</div>	 
@@ -131,35 +131,7 @@
 	</div>
  
 		 
-		</div>
-	 
-	
-	@if(!$hearted) 
-		{!! Form::open(array('route' => 'heart', 'role' => 'form', 'id' => 'heartform'))!!}
-			{!! Form::hidden('postid', $post->id) !!}
-		{!! Form::close() !!}
-		
-		<script type="text/javascript">
-
-		$(document).ready(function(){
-			var heartform = $("#heartform");
-			$('.post-heart').click(function(e) {
-				
-				heartform.submit();
-				e.preventDefault();
-				
-				
-			});
-		 });
-		 
-		 </script>
-	 @else
-	 <script type="text/javascript">
-	 	$('.post-heart').css('color', 'red');
-	 	
-	 </script>
-	 @endif
-	 
+		</div> 
 	 </div>
 @stop
 

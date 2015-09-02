@@ -10,7 +10,10 @@ class Post extends Model {
 	
 	protected $fillable = ['title', 'body', 'coverpic', 'tags', 'user_id', 'created_at', 'author', 'hearts'];
 
-	
+	public function uphearts()
+	{
+		return $this->hasMany('App\UpHeart');
+	}
 	//a post is owned by a user
 	public function user() 
 	{

@@ -46,7 +46,7 @@ class VotesController extends Controller {
 		
 		$user->newNotification()
 		//->withType('uphearted') --this breaks it
-		->withSubject('New vote')
+		->withSubject('New vote: ')
 		->withBody(\Auth::user()->name.' has '.$voteValue.'d your comment: '.substr($comment->body, 0, 30).'...')
 		->regarding($post)
 		->deliver();

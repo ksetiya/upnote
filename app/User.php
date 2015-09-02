@@ -51,6 +51,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         throw new ModelNotFoundException;
     }
 	
+	// a user can have many uphearts
+	 
+	public function uphearts() 
+	{
+		return $this->hasMany('App\UpHeart');
+	}
+	
 	// a user can have many posts
 	 
 	public function posts() 

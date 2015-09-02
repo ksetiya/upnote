@@ -24,11 +24,12 @@
 				 	</div>
 				<div class="thumbnail-footer">
 					
-					 
-						<i class="fa fa-heart"></i> {{$post->hearts}}
-					 
+						@include('partials.upheartButton') {!! $post->uphearts()->count() !!}
+				
+						
 						<i class="fa fa-comment"></i> {!! $post->comments->count() !!} 
 					 
+					
 				</div>
 	</div>
 </article>
