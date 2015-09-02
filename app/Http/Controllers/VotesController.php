@@ -33,7 +33,7 @@ class VotesController extends Controller {
 			$comment->upvotes++;
 			$vote->vote = 1;
 			
-		} elseif($voteValue == 'downVote'){
+		} elseif($voteValue == 'downvote'){
 			$comment->upvotes--;
 			$vote->vote = 0;
 		}
