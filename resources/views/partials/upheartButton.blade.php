@@ -1,4 +1,4 @@
-	@if(Auth::check() && !$post->uphearts()->where('user_id', Auth::user()->id)->exists())	
+	@if( (Auth::check() && !$post->uphearts()->where('user_id', Auth::user()->id)->exists()) || Auth::guest())
 				
 					 {!! Form::open(array('route' => 'posts', 'role' => 'form', 'id' => 'post'.$post->id, 'class' => 'upheartForm'))!!}
 			   	
@@ -22,7 +22,8 @@
 									 
 								</script>
 								
-				@else
+				@elseif(Auth::check() && $post->uphearts()->where('user_id', Auth::user()->id)->exists())
 					<i class="post-heart fa fa-heart hearted"></i>  
-				@endif
+					
+					@endif
 				

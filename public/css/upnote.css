@@ -467,6 +467,10 @@ ul.notification{
 }
 
 /* Comments */
+.comment-link:hover{
+  text-decoration:none;
+  
+}
 .comments__create-form{
   margin-top:5em;
 }

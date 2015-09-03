@@ -17,31 +17,23 @@ class UpheartsController extends Controller {
 	 */
 	public function store()
 	{
-		if(\Auth::guest()){
-				return redirect('/auth/login');
-		} 
- 
 		$postID = Req::input('postid');
-	 
-		$post = Post::where('id', $postID)->first();
-		$upheart =	UpHeart::create([
-					'post_id' => Req::input('postid'),
-					'user_id' => \Auth::user()->id
-					]);
-					
-		
+		$post = Post::where('id', $postID)->first(); 
 		$user = User::find($post->user_id);
-	 
-		$user->newNotification()
-		//->withType('uphearted') --this breaks it
-		->withSubject('New UpHeart: ')
-		->withBody(\Auth::user()->name.' has UpHearted your post! '.substr($post->body, 0, 30).'...')
-		->regarding($post)
-		->deliver();
-        
-        if(\Auth::check()){
 		
+        if(\Auth::check()){
+			$upheart =	UpHeart::create([
+				'post_id' => Req::input('postid'),
+				'user_id' => \Auth::user()->id
+				]);
 			\Auth::user()->addToPoints(50);
+			
+			$user->newNotification()
+			//->withType('uphearted') --this breaks it
+			->withSubject('New UpHeart: ')
+			->withBody(\Auth::user()->name.' has UpHearted your post! '.substr($post->body, 0, 30).'...')
+			->regarding($post)
+			->deliver();
 			
 			if(\Auth::user()->setLevel()){
 				\Auth::user()->newNotification()
@@ -49,6 +41,16 @@ class UpheartsController extends Controller {
 				->regarding($post) 
 				->deliver();
 			}
+        }else{
+        	$upheart =	UpHeart::create([
+				'post_id' => Req::input('postid')
+				]);
+        	$user->newNotification()
+			//->withType('uphearted') --this breaks it
+			->withSubject('New UpHeart: ')
+			->withBody('Someone (anonymously) UpHearted your post! '.substr($post->body, 0, 30).'...')
+			->regarding($post)
+			->deliver();
         }
 		
 		return redirect()->back()->withFlashmessage("+50 points. Thanks! Your love means a lot. If you haven't already, please login and leave a few uplifting words for ".$post->author." as well.");

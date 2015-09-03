@@ -27,7 +27,7 @@
 						@include('partials.upheartButton') {!! $post->uphearts()->count() !!}
 				
 						
-						<i class="fa fa-comment"></i> {!! $post->comments->count() !!} 
+						<a class="comment-link" href="{{action('PostsController@show', $post->id)}}#comments"><i class="fa fa-comment"></i> {!! $post->comments->count() !!} </a>
 					 
 					
 				</div>
