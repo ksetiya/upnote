@@ -19,6 +19,7 @@ Route::get('users/{username}/posts', 'PostsController@showUserPosts');
 //Route::get('posts/category/{category}', 'PostsController@showCategory');  
 Route::get('posts/latest', 'PostsController@showLatest');  
 Route::get('posts/trending', 'PostsController@showTrending'); 
+Route::get('posts/popular', 'PostsController@getPopular'); 
 
 //contact form
 Route::get('contact', 'ContactController@create');

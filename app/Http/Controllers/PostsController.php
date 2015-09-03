@@ -13,6 +13,7 @@ use App\Notification;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Tag;
+use DB;
 
 class PostsController extends Controller {
 
@@ -155,10 +156,27 @@ class PostsController extends Controller {
 
 	}
 	
+	public function getPopular(){ //the 20 most popular posts by # of uphearts
+	
+		$popular = Post::select(DB::raw('posts.*, count(*) as "aggregate"'))
+	    ->join('up_hearts', 'posts.id', '=', 'up_hearts.post_id')
+	    ->groupBy('post_id')
+	    ->orderBy('aggregate', 'desc')->take(20)->get();
+    
+		return view('posts.index')->with(['posts' => $popular]);
+
+	}
+	
 	public function showTrending(){
-		$latest = $this->getLatest(30);
-		$trending = $latest->sortByDesc('hearts');
 		
+		// $latest = $this->getLatest(30);
+		// $trending = $latest->sortByDesc('hearts');
+		
+		$trending = Post::select(DB::raw('posts.*, count(*) as "aggregate"'))
+	    ->join('up_hearts', 'posts.id', '=', 'up_hearts.post_id')
+	    ->groupBy('post_id')
+	    ->orderBy('posts.created_at', 'desc')->get();
+    
 		return view('posts.index')->with(['posts' => $trending]);
 	}
 	

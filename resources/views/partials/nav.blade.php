@@ -28,9 +28,12 @@
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-list"></i> Stories <span class="caret"></span></a>
 				  <ul class="dropdown-menu" role="menu">
-				  	<li><a href="{{url('posts/trending')}}"> <i class="fa fa-line-chart"></i> Trending</a></li>
-					<li><a href="{{url('posts/latest')}}"> <i class="fa fa-clock-o"></i> Latest</a></li>
 					<li><a href="{{url('posts')}}"> <i class="fa fa-book"></i> All</a></li>
+					<li class="divider"></li>
+				  	<li><a href="{{url('posts/latest')}}"> <i class="fa fa-clock-o"></i> Latest</a></li>
+				  	<li><a href="{{url('posts/popular')}}"> <i class="fa fa-heart"></i> Popular</a></li>
+				  	<li><a href="{{url('posts/trending')}}"> <i class="fa fa-line-chart"></i> Trending</a></li>
+					
 				<!--	<li class="divider"></li>
 					<li><a href="{{url('posts/category/health')}}">Health</a></li>
 					<li><a href="{{url('posts/category/relationships')}}">Relationships</a></li>
