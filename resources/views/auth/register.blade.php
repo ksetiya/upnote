@@ -28,11 +28,11 @@
 		<div class="col-md-6 col-md-offset-3">
 		<h4><a data-toggle="collapse" data-target="#collapseOne" 
            href="#collapseOne">
-         <div class="panel-heading text-center">Register with email</div>
+         <div class="panel-heading text-center">Register with email - the <strong class="label label-primary">anonymous</strong> option</div>
         </a></h4>
 			<div class="panel panel-default user-registration-panel">
 				 
-        <div id="collapseOne" class="panel-collapse collapse out">
+        <div id="collapseOne" class="panel-collapse collapse in">
 		
 				<div class="panel-body">
 					@if (count($errors) > 0)
@@ -52,14 +52,14 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								<input type="text" class="form-control" placeholder="Choose a username" name="name" value="{{ old('name') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								<input type="email" class="form-control" placeholder="This will not be published" name="email" value="{{ old('email') }}">
 							</div>
 						</div>
 
