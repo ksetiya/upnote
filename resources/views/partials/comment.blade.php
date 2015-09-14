@@ -9,7 +9,13 @@
 	       </h4>
         <div class="row">
 	        <div class="col-md-12">
-	        <div class="comment-body"> {!! $comment->body !!}</div>
+	        <div class="comment-body"> 
+	        	@if(isset($excerpt))
+	        		{!! substr($comment->body, 0, 40) !!}...
+	        	@else
+	        		{!! $comment->body !!}
+	        	@endif
+	        </div>
 	        </div>
 	    </div>
 	    <div class="row">
