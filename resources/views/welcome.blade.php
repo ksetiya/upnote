@@ -36,33 +36,16 @@
 			 <a class="btn btn-primary btn-lg" href="/auth/register" role="button"><strong>Join </strong><i class="fa-heart fa"></i></a>
 			</div>
 			<hr>
-		<div class="row text-center">
-			<!-- newsletter -->
-			@include('partials.newsletter')
-		</div>
-		
-	
- 
-	
+		 
+   
 	<div class="row wow fadeIn">
-		<div class="col-md-4 home-thumb">
-			 <a href="posts/tag/school" class="thumbnail">
-			  <img src="/images/finals.png" alt="Finals coming up">
-			  <span>Finals are coming up</span>
-			</a>
-		</div>
-		 <div class="col-md-4 home-thumb">
-			 <a href="posts/tag/grief" class="thumbnail">
-			  <img src="/images/gran.png" alt="Lost a loved one">
-			  <span>Lost a loved one</span>
-			</a>
-		</div>
-		 <div class="col-md-4 home-thumb">
-			 <a href="posts/tag/lighthearted" class="thumbnail">
-			  <img src="/images/newcity.png" alt="Moving to a new city">
-			  <span>Moving to a new city</span>
-			</a>
-		</div>
+		<h3 class="text-center">Featured <a href="{{action('PostsController@index')}}" title="All stories">Stories</a>		</h3>
+	@foreach($posts as $post)
+		@include('partials.post-block')
+		 
+	@endforeach
+	
+	
 	</div>	
 
 	<div class="typed jumbotron home-banner home-typed">
@@ -76,28 +59,79 @@
 	    </div>
 	</div> 
 	
-	<div class="row wow fadeIn"></div>
+	<div class="row wow fadeIn"> 
+		<h3 class="text-center"><a href="{{action('PostsController@create')}}">Write your story</a>, we're here to support you</h3>
 		 <div class="col-md-4 home-thumb">
-			 <a href="posts/tag/health" class="thumbnail">
+			 <a href="{{action('PostsController@showByTag', 'health')}}" title="View all stories about health" class="thumbnail">
 			  <img src="/images/cancer.png" alt="Coping with cancer">
 			  <span>Coping with cancer</span>
+			  
+			  	<span class="taglabel label-success label">
+			  		#health
+			  		</span> 
 			</a>
 		</div>
 		 <div class="col-md-4 home-thumb">
-			 <a href="posts/tag/relationships" class="thumbnail">
-			  <img src="/images/heartbreak.png" alt="Tough break-up">
+			 <a href="{{action('PostsController@showByTag', 'relationships')}}" title="View all stories about relationships"  class="thumbnail">
+			  <img src="/images/heartbreak.png" title="View all stories about relationships" alt="Tough break-up">
 			  <span>Tough break-up</span>
+			  <span class="taglabel label-success label">
+			  		#relationships
+			  		</span> 
 			</a>
 		</div>
 		 <div class="col-md-4 home-thumb">
-			 <a href="posts/tag/family" class="thumbnail">
+			 <a href="{{action('PostsController@showByTag', 'family')}}" title="View all stories about family"  class="thumbnail">
 			  <img src="/images/baby.png" alt="Going to be a parent">
 			  <span>Going to be a parent!</span>
+			  
+			  <span class="taglabel label-success label">
+			  		#family
+			  		</span> 
 			</a>
 		</div>
 		 
 	</div>
 	
+	
+	<div class="row wow fadeIn"> 
+
+	<div class="col-md-4 home-thumb">
+			 <a href="{{action('PostsController@showByTag', 'school')}}" title="View all stories about school"  class="thumbnail">
+			  <img src="/images/finals.png" alt="Finals coming up">
+			  <span>Finals are coming up</span>
+			  <span class="taglabel label-success label">
+			  		#school
+			  		</span> 
+			</a>
+		</div>
+		 <div class="col-md-4 home-thumb">
+			 <a href="{{action('PostsController@showByTag', 'grief')}}" title="View all stories about grief"  class="thumbnail">
+			  <img src="/images/gran.png" alt="Lost a loved one">
+			  <span>Lost a loved one</span>
+			  <span class="taglabel label-success label">
+			  		#grief
+			  		</span> 
+			</a>
+		</div>
+		 <div class="col-md-4 home-thumb">
+			 <a href="{{action('PostsController@showByTag', 'lighthearted')}}" title="View all lighthearted stories"  class="thumbnail">
+			  <img src="/images/newcity.png" alt="Moving to a new city">
+			  <span>Moving to a new city</span>
+			  <span class="taglabel label-success label">
+			  		#lighthearted
+			  		</span> 
+			</a>
+		</div>
+	</div>
+	
+	<hr> 
+	<div class="row text-center">
+			<!-- newsletter -->
+			@include('partials.newsletter')
+		</div>
+		
+		
 	<script type="text/javascript">
 			(function() {
 

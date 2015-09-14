@@ -48,7 +48,7 @@ class PostsController extends Controller {
 	public function create()
 	{
 		if(\Auth::guest()){
-				return redirect('/auth/login');
+				return redirect('/auth/register');
 				
 			} else {
 				$tags = Tag::lists('name', 'id');	
@@ -169,9 +169,7 @@ class PostsController extends Controller {
 	
 	public function showTrending(){
 		
-		// $latest = $this->getLatest(30);
-		// $trending = $latest->sortByDesc('hearts');
-		
+	 	
 		$trending = Post::select(DB::raw('posts.*, count(*) as "aggregate"'))
 	    ->join('up_hearts', 'posts.id', '=', 'up_hearts.post_id')
 	    ->groupBy('post_id')
@@ -180,15 +178,7 @@ class PostsController extends Controller {
 		return view('posts.index')->with(['posts' => $trending]);
 	}
 	
-	// public function showCategory($category) {
-	
-	 
-	// 	$posts = Post::where('category', $category)
-	// 			->where('draft', 0)->get();
-		
-		 
-	// 	return view('posts.index')->with(['posts' => $posts, 'category'=>$category]);
-	// }
+ 
 
 	 
 	/**

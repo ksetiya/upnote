@@ -26,15 +26,11 @@
 	
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-		<h4><a data-toggle="collapse" data-target="#collapseOne" 
-           href="#collapseOne">
-         <div class="panel-heading text-center">Log in with email</div>
-        </a></h4>
-			<div class="panel panel-default user-registration-panel">
-
-        
-        <div id="collapseOne" class="panel-collapse collapse out">
-				 
+		<h4> 
+         <div class="panel-heading text-center">Log in with email <br/><small> No account? <a href="{{url('auth/register')}}">Register</a></small></div>
+         </h4>
+			<div class="panel panel-default user-registration-panel"> 
+ 		 
 			 	<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -86,7 +82,7 @@
 					</form>
 					 
 				</div>
-			</div>
+		 
 		 <h5 class="text-center"><small>By logging in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</small></h5>
 		</div>
 	</div>

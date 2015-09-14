@@ -2,6 +2,7 @@
 
 use \App\User;
 use GeoIP;
+use \App\Post;
 
 
 class WelcomeController extends Controller {
@@ -37,7 +38,8 @@ class WelcomeController extends Controller {
 	{
 		
 		$users = User::all();
-		return view('welcome', compact('users'));
+		$posts = Post::all()->random(6);
+		return view('welcome', compact(['users', 'posts']));
 	}
 
   

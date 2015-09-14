@@ -29,8 +29,16 @@
 						
 						<a class="comment-link" href="{{action('PostsController@show', $post->id)}}#comments"><i class="fa fa-comment"></i> {!! $post->comments->count() !!} </a>
 					 
-					
+				 
+						
+					 
+				 
 				</div>
+				@foreach($post->comments as $comment)
+						
+							@include('partials.comment')
+							@break
+						@endforeach
 	</div>
 </article>
 	

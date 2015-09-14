@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use App\User;
-
+use Blade;
 class AppServiceProvider extends ServiceProvider {
 
 	/**
@@ -19,7 +19,13 @@ class AppServiceProvider extends ServiceProvider {
 				$unreadNotifications = $user->notifications()->unread()->orderBy('sent_at', 'DESC')->get();
 				$view->with('unreadNotifications', $unreadNotifications);
 				}
-		});  
+		});
+		
+		Blade::extend(function($value)
+		{
+		  return preg_replace('/(\s*)@(break|continue)(\s*)/', '$1<?php $2; ?>$3', $value);
+		});
+
 	}
 
 	/**
