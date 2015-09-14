@@ -10,7 +10,7 @@
  
  @foreach(array_chunk($posts->all(), 3) as $row)
 			 
-	<div class="row stories-row"> 
+	<div class="row stories-row grid"> 
 		 @foreach($row as $post)
 			 
 			@include('partials.post-block')

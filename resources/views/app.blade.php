@@ -29,7 +29,7 @@
 		<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-		 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
 		 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 	
@@ -84,6 +84,20 @@
 	</script>
 	
 	<script src="/js/wow.min.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	         $('.grid').isotope({
+	              itemSelector: '.grid-item',
+	              layoutMode: 'masonry',
+	              columnWidth: 435
+	            });
+	        
+	    });
+	           
+	</script>
+
+
 	<script>
 		new WOW().init();
 	</script>

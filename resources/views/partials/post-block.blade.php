@@ -1,5 +1,5 @@
 @if(!$post->draft)
-<article class="col-md-4 story-wrapper">
+<article class="grid-item col-md-4 story-wrapper">
 	@unless($post->coverpic == null)
 	<div class="story-thumbphoto">
 		 <a href="{{ action('PostsController@show', [$post->id]) }}">
