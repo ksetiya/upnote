@@ -7,19 +7,12 @@
 <p class="alert alert-info">{{ Session::get('flashmessage') }}</p>
 @endif
 	<h1 class="page-header wow flipInX">All {{$posts->count()}} stories</h1>
+ 	<div class="row stories-row grid"> 
+ 		@foreach($posts as $post)
+ 			@include('partials.post-block')
+ 		@endforeach
+ 	</div>
  
- @foreach(array_chunk($posts->all(), 3) as $row)
-			 
-	<div class="row stories-row grid"> 
-		 @foreach($row as $post)
-			 
-			@include('partials.post-block')
-								 
-		@endforeach
-		 
-	</div>
-	 
-	@endforeach
 	 
 	
 </div>	 
