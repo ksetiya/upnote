@@ -8,7 +8,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<span class="beta-label"><small>Beta</small></span>
-				<a class="navbar-brand" href="{{url('/')}}">Upnote <br/></a>
+				<a class="navbar-brand" href="{{url('/')}}">{!! HTML::image('images/logo_dark.png', 'UpNote') !!} <br/></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\User;
+use \App\Post;
 
 class HomeController extends Controller {
 
@@ -33,7 +34,9 @@ class HomeController extends Controller {
 	public function index()
 	{
 		$users = User::all();
-		return view('welcome', compact('users'));
+		$posts = Post::all()->random(6);
+		return view('welcome', compact(['users', 'posts']));
+		
 	}
 
 }

@@ -14,6 +14,10 @@ body { padding-top: 90px; }
     font-weight: 700;
 }
 
+.navbar-brand img{
+  width:120px;
+  display:inline;
+}
 
 #home-banner-content{
 	/*background: rgba(255, 229, 209, 0.88);*/
@@ -44,6 +48,10 @@ body { padding-top: 90px; }
 	color:#ECC698;
 	text-shadow: 0 1px 81px #333;
 	font-size:8em;
+}
+
+#welcome-title img{
+  width:480px;
 }
 
 .crowdsourcing-list h2, .crowdsourcing-list div{

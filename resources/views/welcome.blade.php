@@ -5,7 +5,7 @@
 	
 	<div class="jumbotron" id="home-banner">
 		<div id="home-banner-content">
-		  <h1 id="welcome-title">Upnote</h1>
+		  <h1 id="welcome-title">{!! HTML::image('images/logo.png', 'UpNote') !!}</h1>
 		  <div class="crowdsourcing-list">
 			<h2>Crowdsourcing </h2>
 				<div>Moral Support</div>
