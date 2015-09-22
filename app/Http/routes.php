@@ -29,9 +29,10 @@ Route::post('contact', ['as' => 'contact', 'uses' => 'ContactController@store'])
 Route::resource('comments', 'CommentsController'); 
 Route::post('heart', array('as'=> 'heart', 'uses' => 'PostsController@upHeart'));
 Route::post('vote', array('as'=> 'vote', 'uses' => 'VotesController@store'));
-Route::post('posts', array('as'=> 'posts', 'uses' => 'UpheartsController@store'));
+
 Route::resource('posts', 'PostsController'); 
- 
+Route::post('posts/{postid}', array('as'=> 'posts', 'uses' => 'UpheartsController@store'));
+
 Route::get('posts/tag/{tag}', 'PostsController@showByTag');
 
 Route::post('posts/{id}/comments', [
