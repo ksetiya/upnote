@@ -1,5 +1,6 @@
 <article class="comments__comment media status-media">
     <div class="pull-left">
+		 
         @include('partials.avatar', ['user' => $comment->user, 'class' => 'media-object img-circle'])
         
     </div>

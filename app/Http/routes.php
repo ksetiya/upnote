@@ -25,12 +25,12 @@ Route::get('posts/popular', 'PostsController@getPopular');
 Route::get('contact', 'ContactController@create');
 Route::post('contact', ['as' => 'contact', 'uses' => 'ContactController@store']);
 
-Route::resource('posts', 'PostsController'); 
+
 Route::resource('comments', 'CommentsController'); 
 Route::post('heart', array('as'=> 'heart', 'uses' => 'PostsController@upHeart'));
 Route::post('vote', array('as'=> 'vote', 'uses' => 'VotesController@store'));
 Route::post('posts', array('as'=> 'posts', 'uses' => 'UpheartsController@store'));
- 
+Route::resource('posts', 'PostsController'); 
  
 Route::get('posts/tag/{tag}', 'PostsController@showByTag');
 
@@ -42,6 +42,8 @@ Route::post('posts/{id}/comments', [
 //Route::post('handleComment', array('as'=> 'handleComment', 'uses' => 'UsersController@handleComment'));
 //Route::post('users.store-points', array('as' => 'users.store-points', 'uses' => 'UsersController@storePoints'));
  
+
+
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 

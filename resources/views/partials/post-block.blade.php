@@ -30,13 +30,18 @@
 						<a class="comment-link" href="{{action('PostsController@show', $post->id)}}#comments"><i class="fa fa-comment"></i> {!! $post->comments->count() !!} </a>
 			
 				</div>
-				@foreach($post->comments as $comment)
-					@unless(Route::getCurrentRoute()->getActionName() == 'show')
-					@include('partials.comment', ['excerpt' => true])
-					@endunless
-					@break
-					
-				@endforeach
+				
+					@if($post->comments)
+						@foreach($post->comments as $comment)
+						@unless(Route::getCurrentRoute()->getActionName() == 'show')
+								@include('partials.comment', ['excerpt' => true])
+							@endunless
+							@break	
+						 
+							
+						@endforeach
+				@endif
+			
 	</div>
 </article>
 	
