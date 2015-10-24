@@ -63,7 +63,7 @@
 	</div> 
 	
 	<div class="row wow fadeIn"> 
-		<h3 class="text-center"><a href="{{action('PostsController@create')}}">Write your story</a>, we're here to support you</h3>
+		<h3 class="text-center text-uppercase"><a href="{{action('PostsController@create')}}">Write your story</a> <br/> <small>we're here to support you</small></h3>
 
 		 <div class="col-md-4 home-thumb">
 			 <a href="{{action('PostsController@showByTag', 'health')}}" title="View all stories about health" class="thumbnail">

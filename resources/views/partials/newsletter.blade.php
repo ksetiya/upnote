@@ -59,9 +59,8 @@
 	  
 	
 	</style>
-	<h2><strong>Be the first to receive UpDates!</strong></h2>
-<img width="100px" style="text-align:center; display:block; margin:0 auto;" src="{{url('images/icons/mail.png')}}" alt="UpNote Newsletter" />
-
+	<h3 class="text-center text-uppercase">Receive updates! <br /><small>Get all the UpNote newness via <i class="text-muted fa fa-envelope"></i> </small></h3>
+ 
 <div id="mc_embed_signup">
 		
 			
@@ -70,12 +69,12 @@
 			 
 				<label for="mce-EMAIL"> </label>
 				 
-				<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="tony@stark.com" required>
+				<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="mother@teresa.com" required>
 				
 				<div class="clear">
 				
 				
-				<input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-lg btn-primary btn-block">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-lg btn-primary btn-block">
 				
 				</div>
 			</form>
