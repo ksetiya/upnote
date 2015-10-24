@@ -367,6 +367,9 @@ article.post-body{
     margin:10px;
     
   }
+  .story-wrapper:hover{
+    background:#f7f7fa;
+  }
  .story-excerpt{
    padding:5px 0 0 0;
    
@@ -380,7 +383,7 @@ h4.author-wrap{
 .story-thumbphoto{
      background-size: cover; 
      border-radius: 3px;
-    height: 117px;
+    height: 125px;
     margin-right: 20px;
     width: 150px;
 }

@@ -27,7 +27,7 @@
 	</div>
 	
  
-		<div class="row text-center">
+	<!--	<div class="row text-center">
 			<h2 id="home-slogan" class="wow fadeIn"><a href="{{ URL::to('/auth/register') }}">Join the conspiracy of kindness</a>
 			<br/>
 			<small>
@@ -37,10 +37,12 @@
 			</div>
 			<hr>
 		 
-   
+   -->
 	<div class="row">
-		<h3 class="text-center">Featured <a href="{{action('PostsController@index')}}" title="All stories">Stories</a>		</h3>
+		<h3 class="text-center text-uppercase">Featured <a href="{{action('PostsController@index')}}" title="All stories">Stories</a>		</h3>
+		
 	 <div class="container">
+	 
 	@foreach($posts as $post)
 		@include('partials.post-block')
 		 
@@ -62,6 +64,7 @@
 	
 	<div class="row wow fadeIn"> 
 		<h3 class="text-center"><a href="{{action('PostsController@create')}}">Write your story</a>, we're here to support you</h3>
+
 		 <div class="col-md-4 home-thumb">
 			 <a href="{{action('PostsController@showByTag', 'health')}}" title="View all stories about health" class="thumbnail">
 			  <img src="/images/cancer.png" alt="Coping with cancer">
