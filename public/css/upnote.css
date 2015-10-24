@@ -111,16 +111,26 @@ body { padding-top: 90px; }
  
  .home-thumb a span.taglabel{
    height:30px;
-  width:90%;
+  width:92%;
    font-family: 'Proxima Nova',sans-serif;
    position:absolute;
    top:55%;
-   left:5%;
-   right:5%;
+   left:3%;
+    
    font-size:1.3em;
    line-height:1em;
+     background: #17b767;
+   
+	padding:7px;
+	font-weight:700;
+ 
+	border:none;
    
  }
+ 
+  .home-thumb a span.taglabel a{
+  color:white;
+}
 
 /*typed cursor */
 
@@ -319,13 +329,14 @@ article.post-body{
 /*}*/
 
 .taglabel{
-  background: #17b767;
-  
- font-size:1em;
-	padding:7px;
-	font-weight:700;
-	border-radius:3px;
+  font-size:0.8em;
+	padding:5px;
+	font-weight:600;
+	border-radius:4px;
 	position: relative;
+	background:white;
+	border:2px solid #ccc;
+	margin:4px;
 	 
 }
 .post-tag{
@@ -335,10 +346,16 @@ article.post-body{
   margin-top:1em;
 }
 .taglabel a{
-  color:white;
+  color:#bbb;
 }
 
 /* posts overview views, thumbnails */
+.upheart-button, .comments-link {
+  
+  margin-top:40px;
+  font-weight:600;
+  font-size:1.5em;
+}
 .tagwrap{
   padding:5px 0;
   height:30px;
@@ -346,44 +363,44 @@ article.post-body{
   overflow-x:hidden;
    
 }
-.stories-row{
-  
+  .story-wrapper{
+    margin:10px;
     
-}
- .story-wrapper{
-	margin-bottom:30px;
- }
- 
+  }
  .story-excerpt{
-   padding:5px;
-   padding-bottom:0;
-   margin-bottom:15px;
-   border-bottom: 1px solid #e3e3e3;
+   padding:5px 0 0 0;
    
+   color:#999;
+  
  }
+h4.author-wrap{
+  
+  margin:0;
+}
+.story-thumbphoto{
+     background-size: cover; 
+     border-radius: 3px;
+    height: 117px;
+    margin-right: 20px;
+    width: 150px;
+}
 .story-thumbphoto img{
 	display:block;
 	width:100%;
+	border-radius:2px;
 }
-.story-thumbphoto, .story-thumbdata{
-	border:1px solid #ccc;
-	box-shadow: 1px 1px 3px #545454;
-}
-
  
-.story-thumbphoto
-{
-	border-radius:5px;
-}
  
 .story-thumbdata{
 	padding:5px;
-	min-height:250px;
+	 
 }
-.story-thumbdata .story-title{
-  margin-top:20px;
-  
+
+.story-title{
+  margin:0;
+  font-size:1.8em;
 }
+ 
 .thumbnail-footer{
  
  width:100%;

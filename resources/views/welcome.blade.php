@@ -40,12 +40,12 @@
    
 	<div class="row">
 		<h3 class="text-center">Featured <a href="{{action('PostsController@index')}}" title="All stories">Stories</a>		</h3>
-	<div class="grid">
+	 <div class="container">
 	@foreach($posts as $post)
 		@include('partials.post-block')
 		 
 	@endforeach
-	</div>
+ </div>
 	
 	</div>	
 
