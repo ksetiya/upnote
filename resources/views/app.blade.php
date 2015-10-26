@@ -58,7 +58,11 @@
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
- 
+	<!-- twitter follow button -->
+	<div id="twitterfollow">
+	 <a href="https://twitter.com/iamkaransetiya" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</div>
 	@include('partials.nav')
 
 	<div class="container-fluid">

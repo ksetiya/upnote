@@ -411,6 +411,14 @@ h4.author-wrap{
 	 
 	
 }
+
+#twitterfollow{
+  position:fixed;
+  bottom:10px;
+  right:60px;
+  z-index:50;
+  
+}
 /*login and registration pages and forms */
 
   .horizontal-separator {
