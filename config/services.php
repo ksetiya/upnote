@@ -15,8 +15,8 @@ return [
 	*/
 
 	'mailgun' => [
-		'domain' => '',
-		'secret' => '',
+		'domain' => 'upnote.io',
+		'secret' => 'key-71c62ad8bce51ff4121905fa0397ec00',
 	],
 
 	'mandrill' => [
